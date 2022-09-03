@@ -17,11 +17,14 @@ function updateTask() {
         todoList[todoItemId]
       }`
     );
-    if (updateValue === "") {
+    if (updateValue != null) {
       todoList[todoItemId] = updateValue;
     }
     viewAllTasks(); // display updated todo lists
     console.log(todoList[todoItemId]);
+  });
+  $(".col.todoItem").click(async function () {
+    updateTask();
   });
 }
 
