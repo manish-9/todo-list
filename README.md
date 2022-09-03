@@ -1,2 +1,2 @@
 # todo-list
-ToDo List app created using js without any database
+Note : This ToDo List app created using js as a practice exercise without any database. Data will be lost on refresh
