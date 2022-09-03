@@ -60,7 +60,7 @@ function viewAllTasks() {
   clear();
   if (todoList.length != 0) {
     $(".row.viewAll").before(
-      `<div class="updateInfo">You are Viewing the latest todo list. Click one of the below to update Todo Item</div>`
+      `<div class="updateInfo">You are Viewing the latest todo list. Click on "Update an item" to update below items.</div>`
     );
 
     todoList.forEach((item, i) => {
