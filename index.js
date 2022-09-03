@@ -44,7 +44,7 @@ function removeTask() {
 
     if (task >= 0 && task < todoList.length) {
       notFound = false;
-      // console.log(todoList.splice(task, 1)); // task is the index user wants to delete and 1 is the # of elements that will be removed from mentioned index...
+      todoList.splice(task, 1); // task is the index user wants to delete and 1 is the # of elements that will be removed from mentioned index...
     }
     if (notFound) {
       alert("Item doesn't Exist !!!");
