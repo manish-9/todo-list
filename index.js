@@ -19,7 +19,7 @@ function updateTask() {
         todoList[todoItemId]
       }`
     );
-    if (updateValue != null) {
+    if (updateValue != null && updateValue != "") {
       todoList[todoItemId] = updateValue.slice(0,35);
     }
     viewAllTasks(); // display updated todo lists
