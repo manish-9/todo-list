@@ -54,7 +54,7 @@ function removeTask() {
     }
     viewAllTasks();
   } else {
-    alert("No items in your ToDo List !!!");
+    alert("Your ToDo List is now Empty!!!");
   }
 }
 
@@ -71,7 +71,7 @@ function viewAllTasks() {
       );
     });
   } else {
-    alert("No items in your ToDo List !!!");
+    alert("Your ToDo List is Empty!!!");
   }
 }
 
