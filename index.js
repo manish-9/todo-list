@@ -1,12 +1,14 @@
 const todoList = [];
 
+// function to create and add new Todo task in list...
 function createTask() {
-  var task = prompt("New ToDo item (characters < 80 will be stored!): ");
+  var task = prompt("New ToDo item (characters < 36 will be stored!): ");
   if (task.length > 0) {
-    todoList.push(task.slice(0, 80));
+    todoList.push(task.slice(0, 35));
   }
 }
 
+// function to update Todo items...
 function updateTask() {
   viewAllTasks(); // display all todo items so user can select which to update...
 
@@ -18,16 +20,17 @@ function updateTask() {
       }`
     );
     if (updateValue != null) {
-      todoList[todoItemId] = updateValue;
+      todoList[todoItemId] = updateValue.slice(0,35);
     }
     viewAllTasks(); // display updated todo lists
-    console.log(todoList[todoItemId]);
+    // console.log(todoList[todoItemId]);
   });
   $(".col.todoItem").click(async function () {
     updateTask();
   });
 }
 
+// function to remove/delete todo items...
 function removeTask() {
   var notFound = true;
   if (todoList.length != 0) {
@@ -38,19 +41,13 @@ function removeTask() {
         } to remove it from list : `
       )
     );
-    for (let i = 0; i < todoList.length; i++) {
-      if (i == task) {
-        notFound = false;
-        console.log(`${todoList[task]} was removed from ToDo List!`); // reducing one since user doesn't need to worry that array index starts from 0
-        for (let j = i; j < todoList.length; j++) {
-          todoList[j] = todoList[j + 1]; // reducing one since user doesn't need to worry that array index starts from 0
-        }
-      }
+
+    if (task >= 0 && task < todoList.length) {
+      notFound = false;
+      // console.log(todoList.splice(task, 1)); // task is the index user wants to delete and 1 is the # of elements that will be removed from mentioned index...
     }
     if (notFound) {
       alert("Item doesn't Exist !!!");
-    } else {
-      todoList.pop();
     }
     viewAllTasks();
   } else {
@@ -58,6 +55,7 @@ function removeTask() {
   }
 }
 
+// function to retrieve all todo items...
 function viewAllTasks() {
   clear();
   if (todoList.length != 0) {
@@ -67,14 +65,15 @@ function viewAllTasks() {
 
     todoList.forEach((item, i) => {
       $(".row.viewAll").append(
-        `<div id="${i}" class="col col-md-2 todoItem"><i class="far fa-edit"></i>${item}</div>`
+        `<div id="${i}" class="col col-md-2 todoItem"><i class="far fa-edit"></i>&nbsp &nbsp${item}</div>`
       );
     });
   } else {
-    alert("Your ToDo List is Empty!!!");
+    alert("Your ToDo List is now Empty!!!");
   }
 }
 
+// to clear result views
 function clear() {
   $(".actionResult .viewAll").html(""); // clearing existing view
   $(".actionResult .updateInfo").remove(); // update message should be cleared so it is not duplicated on multiple calls of viewAllTasks()...
@@ -84,9 +83,10 @@ function clear() {
 $("button").click(function () {
   var actionSelected = $(this).attr("id");
   actionPerform(actionSelected);
-  console.log(todoList);
+  // console.log(todoList);
 });
 
+// decide which function to call...
 function actionPerform(actionSelected) {
   switch (actionSelected) {
     case "itemAdd":
